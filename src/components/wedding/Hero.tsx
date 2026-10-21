@@ -11,7 +11,7 @@ export function Hero({ active }: { active: boolean }) {
     if (!active) return;
     v.muted = true;
     v.play().catch(() => {});
-    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? v.play().catch(() => {}) : v.pause()));
+    const io = new IntersectionObserver(([e]) => (e?.isIntersecting ? v.play().catch(() => {}) : v.pause()));
     io.observe(v);
     return () => io.disconnect();
   }, [active]);

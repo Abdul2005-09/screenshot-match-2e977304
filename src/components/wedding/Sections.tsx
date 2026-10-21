@@ -124,10 +124,10 @@ export function Gallery() {
       </Reveal>
       <div
         className="relative mx-auto mt-6 flex h-[440px] max-w-3xl items-center justify-center sm:h-[520px]"
-        onTouchStart={(e) => (startX.current = e.touches[0].clientX)}
+        onTouchStart={(e) => (startX.current = e.touches[0]!.clientX)}
         onTouchEnd={(e) => {
           if (startX.current == null) return;
-          const dx = e.changedTouches[0].clientX - startX.current;
+          const dx = e.changedTouches[0]!.clientX - startX.current;
           if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
           startX.current = null;
         }}
@@ -165,8 +165,8 @@ export function Gallery() {
       {zoom !== null && (
         <div role="dialog" aria-modal className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-4" onClick={() => setZoom(null)}>
           <figure className="max-h-full bg-ivory p-3 pb-6 shadow-paper">
-            <img src={photos[zoom].src} alt={photos[zoom].caption} className="max-h-[78svh] w-auto object-contain" />
-            <figcaption className="mt-2 text-center font-script text-2xl text-primary">{photos[zoom].caption}</figcaption>
+            <img src={photos[zoom]!.src} alt={photos[zoom]!.caption} className="max-h-[78svh] w-auto object-contain" />
+            <figcaption className="mt-2 text-center font-script text-2xl text-primary">{photos[zoom]!.caption}</figcaption>
           </figure>
           <button type="button" aria-label="Close" className="absolute right-4 top-4 text-3xl text-ivory">×</button>
         </div>
@@ -183,7 +183,7 @@ export function Closing() {
       <Corner pos="tr" />
       <Reveal className="relative mx-auto max-w-md">
         <div className="float-soft mx-auto w-56 rounded-t-full border-4 border-gold/70 bg-ivory p-2 shadow-paper sm:w-64">
-          <img src={photos[3].src} alt="Dhyaani and Vinotha" loading="lazy" className="aspect-[3/4] w-full rounded-t-full object-cover" style={{ filter: watercolor }} />
+          <img src={photos[3]!.src} alt="Dhyaani and Vinotha" loading="lazy" className="aspect-[3/4] w-full rounded-t-full object-cover" style={{ filter: watercolor }} />
         </div>
       </Reveal>
       <Reveal delay={200} className="relative mt-10 text-center">
